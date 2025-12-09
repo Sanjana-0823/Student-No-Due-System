@@ -57,7 +57,3 @@ This project helps institutions:
 - ⚙️ Improve operational efficiency
 - 🔒 Maintain secure digital records
 - ⚡ Generate certificates quickly
-
-## 👨‍💻 Developer Details 👨‍💻
-Project Name: Student No Due Certificate System  
-Developed By: Your Name
