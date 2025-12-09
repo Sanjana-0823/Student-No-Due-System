@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ADMIN_HOME</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/facstyle.css">
+
+        <script src="https://kit.fontawesome.com/9a7209e4cb.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,100&family=Fira+Sans+Condensed:ital,wght@0,300;0,400;1,200&family=Inconsolata:wght@700&family=Kaushan+Script&family=Lobster&family=Mochiy+Pop+One&family=Oswald&family=Secular+One&family=Tiro+Gurmukhi&family=Uchen&display=swap');
+        
+            h4 {
+                margin-left: 1250px;
+                padding-inline: 25px;
+                padding-top: 0 0;
+                width: 20px;        
+               margin-top: -24px;
+                width: 80px;
+                font-size: 20px;
+                position:absolute;      
+                color: whitesmoke;
+                font-family: 'Lobster', cursive;
+               
+            }
+            #hh {
+                margin-left: 1130px;
+                padding-inline: 25px;
+                width: 50px;        
+                margin-top: -24px;
+                width: 20px;
+                font-size: 20px;
+                position:absolute;
+                color: whitesmoke;
+                font-family: 'Lobster', cursive;                    
+            }
+            body{
+        background:linear-gradient(135deg , rgb(229, 211, 214),#1e1e1e);
+        background-image: url(/static/abbsm.jpg);
+        background-repeat: no-repeat;   
+        background-size: cover;
+        background-position: center;
+    }
+    .imgbx img{
+   position: relative;
+   top: 130px;
+  right: 120px;
+   width: 400px;
+   height: 70%;
+   
+} 
+          
+        </style>
+    </head>
+    <body>
+    {% include "navbaradmin.html" %}
+<br>
+
+        <div class="imgbx">
+            <img src="static/image1.jpeg" alt="">
+        </div>
+        <br>
+        <div class="container">
+            <div class="header">
+                <h1>FACULTY REGISTER</h1>    
+            </div>
+            <br>
+                    <form id='form' method="post" action="addfaculty">
+                        {% csrf_token %}
+                        <div class="form-control">
+                            <input type="text" name="username" id="username" placeholder="Username" required onkeyup="validateUserName()">
+                            <span id="username-error"></span>
+                            <small>Error message</small>
+                        </div>
+                        <div class="form-control">
+                            <input type='text' name="name" id="name" placeholder='Name ' required onkeyup="validateName()">
+                            <span id="name-error"></span>
+                            
+                            <small>Error message</small>
+                        </div>
+                        <div class="form-control">
+                            <input type='text'class='input-field' name="contact" id="contact" placeholder='Contact' required onkeyup="validatePhone()">
+                            <small>Error message</small>
+                            <span id="phone-error"></span>
+                        </div>  
+                        <div class="form-control">
+                            <input type='email'class='input-field' name="email" id="email" placeholder='Email' required onkeyup="validateEmail()">
+                            <span id="email-error"></span>
+                            <small>Error message</small>
+                        </div>
+                        
+                        <div class="form-control">  
+                            <select style="width: 400px;" class="sel1" id="department" name="department" onkeyup="validateDepartment()" >
+                                <option value="select department">Select Department</option>
+                                <option value="BCA">BCA</option>
+                                <option value="BSc">BSc</option>
+                                <option value="BCom">BCom</option>
+                                <option value="LIBRARY">LIBRARY</option>
+                                <option value="ACCOUNTS">ACCOUNTS</option>
+                                <option value="SPORTS">SPORTS</option>
+                            </select>
+                            <span id="department-error"></span>
+
+                            <small>Error message</small>
+                         </div>    
+                        
+                        <div class="form-control"> 
+                            <input type='password'class='input-field' name="password" id="password" placeholder='Enter Password' required onkeyup="validatePassword()">
+                            
+                            <span id="password-error"></span>
+                            <small>Error message</small>
+                        </div>
+                        <div class="form-control"> 
+                            <input type='password'class='input-field' name="conpassword" id="conpassword" placeholder='Confirm Password'  required onkeyup="validateConpassword()">
+                            <span id="conpassword-error"></span>
+                            
+                            <small>Error message</small>
+                        </div>
+                        <button type='submit'class='submit-btn'>Register</button>
+                        <span id="submit-error"></span>
+                        
+                    </form>
+                    
+        </div>            
+    </body>
+</html>

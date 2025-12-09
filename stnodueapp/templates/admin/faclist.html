@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Homepg</title>
+    {% load static %}
+    <link rel="stylesheet" href="static/css/tablestyle1.css"
+
+</head>
+<body>
+    {% include "navbaradmin.html" %}
+    
+    <div class="title">
+        <h1>Faculty List</h1>
+    </div>
+    <br><br>
+    <form action="faclist" id="test" method="post">
+        {% csrf_token %}
+    <div class="tab">
+        <table class="table table-sortable" >
+            <thead>
+                <tr>
+                    <th>UserName</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Password</th>
+                    <th>Action</th>               
+                </tr>
+                
+            </thead>
+            <tbody>
+                {% for fac in faculty %}
+                <tr>
+                    <td>{{ fac.username }}</td>
+                    <td>{{ fac.name }}</td>
+                    <td>{{ fac.contact }}</td>
+                    <td>{{ fac.email }}</td>
+                    <td>{{ fac.department }}</td>
+                    <td>{{ fac.password }}</td>
+                    <td>
+                        <a href="/facedit/{{ fac.id }} "> Edit </a>
+                        <a href="/facdelete/{{ fac.id }} "> Delete </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+     </table> 
+     </div>
+    </form> 
+</body>
+
+</html>

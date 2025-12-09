@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Homepg</title>
+    {% load static %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,100&family=Fira+Sans+Condensed:ital,wght@0,300;0,400;1,200&family=Inconsolata:wght@700&family=Kaushan+Script&family=Lobster&family=Mochiy+Pop+One&family=Oswald&family=Secular+One&family=Tiro+Gurmukhi&family=Uchen&display=swap');
+             
+          .container{
+            
+           background-color:whitesmoke;
+           border-radius: 5px;
+           margin-left: 400px;
+           /* margin-top: 20px; */
+           margin-block: 30px;
+           align-items: center;
+           min-height: 80vh;
+           margin-right: 50px;
+           height: 640px;
+           justify-items: center;
+           box-shadow: 2px 6px 6px 6px rgba(0,0,0,0.3);
+           width: 700px;     
+        }input{
+            margin-top: -12px;
+            width: 250px;
+            padding: 10px 20px;
+            outline: none;
+            align-items: center;
+            border: 1px solid #607d8b;
+            font-size: 14px;
+            letter-spacing: 1px;
+            position: relative;
+            margin-left: 300px;
+            background: transparent;
+            border-radius: 20px;
+            color: black;
+        position: absolute;}
+        textarea{
+            margin-top: -12px;
+            width: 250px;
+            padding: 10px 20px;
+            outline: none;
+            align-items: center;
+            border: 1px solid #607d8b;
+            font-size: 14px;
+            letter-spacing: 1px;
+            position: relative;
+            margin-left: 300px;
+            background: transparent;
+            /* border-radius: 20px; */
+            color: black;
+        /* position: absolute; */}
+        select{
+            margin-top: 60px;
+            width: 290px;
+            padding: 10px 20px;
+            outline: none;
+            align-items: center;
+            border: 1px solid #607d8b;
+            font-size: 14px;
+            letter-spacing: 1px;
+            position: relative;
+            margin-left: -450px;
+            background: transparent;
+            border-radius: 20px;
+            color: black;
+        position: absolute;}
+            label{
+                width: 300px;
+                padding: 10px 20px;
+                outline: none;
+                /* border: 1px solid #607d8b; */
+                font-size: 20px;
+                letter-spacing: 1px;
+        font-family:'Times New Roman', Times, serif;
+        font-weight: bold;
+        margin-left: 50px;
+        position: absolute;
+                
+                background: transparent;
+                /* border-radius: 10px; */
+                color: black;} 
+                button{
+                    background-color: #1b1b1b;
+                    color: whitesmoke;
+                    width: 130px;
+                    border: 2px solid #1e1e1e;
+                    height: 35px;
+                    border-radius: 30px;
+                    font-size: 12px;
+                    font-weight: bolder;
+                    margin-top: 17px;
+                    margin-left:480px;
+                    text-align: center;
+                    justify-content: center;
+                   /* position:absolute; */
+                 }
+                 
+               
+                  .header{
+                    margin: 0;
+           padding: 0px 0px;
+           border-bottom: 2px solid #1e1e1e;
+           background-color: #1e1e1e;   
+           color: whitesmoke;
+        }
+        .header h1{
+           margin: 0;
+           margin-left: 280px;
+        font-family:Arial, Helvetica, sans-serif;
+        height: 49px;
+        }
+        .form{
+            padding: 20px 30px;
+        }
+        
+                    </style>
+
+</head>
+<body>
+    {% include "navbaredit.html" %}
+<br><br>
+    <div class="container">
+        <div class="header">
+            <h1>STATUS</h1>    
+        </div>      
+    <form method="POST" class="post-form" action="/sportsnodueupdate/{{sportsdb.id}}">
+        {% csrf_token %}
+
+        <input type="text" name="id" id="id" required maxlength="20" value="{{ sportsdb.id }}" hidden readonly/>
+
+        <input type="text" name="regno" id="id regno" required maxlength="20" value="{{ sportsdb.regno }}" hidden readonly/>
+
+        <input type="text" name="name" id="id name" required maxlength="20" value="{{ sportsdb.name }}" hidden readonly/>
+
+        <input type="text" name="course" id="id course" required maxlength="20" value="{{ sportsdb.course }}" hidden readonly/>       
+
+        <input type="text" name="year" id="id year" required maxlength="20" value="{{ sportsdb.year }}" hidden readonly/>
+        <input type="text" name="date" id="id date" required maxlength="20" value="{{ sportsdb.date }}" hidden readonly/>
+
+        <input type="text" id="id noduereasons" name="noduereasons"value="{{ sportsdb.noduereasons }}" hidden readonly/>
+        <br><br>
+        <label for=""> Sports </label>
+        <br>
+      <input type="text" name="sports" id="id sports"value="{{ sportsdb.sports }}"readonly>
+      <br><br>
+      <label for=""> Sports Remark</label>
+      <br>
+      <textarea name="sportsremark" id="id sportsremark" cols="10" rows="2" style="resize: none;" readonly value="{{ sportsdb.sportsremark }}" >{{ sportsdb.sportsremark }}</textarea>
+      <br><br>
+        <h4 style="margin-left: 39px; position:absolute;margin-top:20px;font-size:20px;">Approve</h4>
+        <select style="margin-left: 120px; position:absolute;margin-top:20px;font-size:20px;" type="text"name="admin" id="id admin" value="{{ sportsdb.admin }}" >
+            <option  value="select">Select</option>
+            <option  value="Approve">Approve</option>
+              
+            <option  value="Pending">Pending</option>
+              <option value="DisApprove">DisApprove</option>      
+        </select>
+            <button type="submit">Approve</button>
+    </form>
+    </div>
+    <!-- <script>
+        var l = document.getElementById('id libraryremark');
+        libch()
+        {
+            l.value="{{ sportsdb.libraryremark }}"
+        }
+    </script> -->
+</body>
+</html>

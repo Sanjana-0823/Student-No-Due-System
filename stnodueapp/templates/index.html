@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>main</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/indexstyle1.css">
+
+        <script src="https://kit.fontawesome.com/9a7209e4cb.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <style>
+            #contact .form .form-col input{
+    
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 3px;
+    border: none;
+    background: #fff;
+    color: #7e7c87;
+    outline: none;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+}#contact .form .submitbtn{
+    font-size: .9rem;
+    padding: 13px 25px;
+    background: rgb(21, 21, 100);
+    border-radius: 5px;
+    outline: none;
+    border:none;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+}
+   
+  #contact .form .form-col select{
+    
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 3px;
+    border: none;
+    background: #fff;
+    color: #7e7c87;
+    outline: none;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+}    
+
+#contact .form h4{
+ font-size: 24px;
+ color: #2c234d;
+ line-height: 30px;
+ margin-left: 100px;
+ margin-bottom: 10px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="main">
+              </nav> 
+              <div class="main-bar">
+                <nav>
+                  <span></span>
+                  <div class="logo-header">
+                  <img src="static/lo.jpg" alt="">
+                    <h2 class="logo">Student</h2>
+                    <h2 class="logo1">NODUE</h2>
+                </div>
+                      <ul>
+                          <li ><a  href="main">HOME</a></li>
+                          <li class="active"><button class="loginbtn" onclick="document.getElementById('sloginform').style.display='block'" style="width: auto;">LOGIN</button></li>
+                          <li><a  href="adminlogin">ADMIN</a></li>
+                          <li ><a  href="contact">CONTACT US</a></li>
+                      </ul>
+                </nav> 
+              </div>
+<br><br>
+
+<br><br>
+
+<section id="contact">
+    <div>
+        <img style="height:600px;width: 700px; position:absolute; margin-top: 50px;margin-left: 20px;" src="/static/login2.jpg" alt="">
+    </div>
+    <div class="form" style="background-color:white" >
+        
+    <div id="sloginform" class="slogin">
+
+        <div  class="button_box">
+            <div id="btn"></div>
+            <button type="button" onclick='login()' class='toggle_btn1'>STUDENT</button>
+            <button type="button" onclick="register()" class="toggle_btn2">FACULTY</button>
+        </div>
+        <form method="post" id="slogin" class="inputgrplogin" action="/studlogin" >
+            {% csrf_token %}
+            <h4>Student Login</h4>
+            
+            <div class="form-col">
+                <input type="text" id="regno" class="input_field" name="regno" placeholder="Enter your Register Number" required>
+
+            </div>
+            <div class="form-col">
+            
+            <select  class="sel1" id="course" name="course" >
+                <option value="Select Course">Select Course</option>
+                <option value="BCA">BCA</option>
+                <option value="BCom">BCom</option>
+                <option value="BSc">BSc</option>
+            </select>
+        </div>
+        <div class="form-col">
+            
+            <input type="text" id="pass1" name="pass1"class="input_field" placeholder="Enter your Password " required>
+        </div>
+           
+        <div  class="form-col">
+            <button class="submitbtn" type="submit">LOGIN</button><br>
+
+        </div>
+              
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <strong style="color:white;">Message:</strong> {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+         
+        </form>
+        
+                   
+        <div id="floginform" >
+                       
+            <form method="post"id="flogin"class="inputgrpreg"" action="/faclogin" >
+                {% csrf_token %}
+                <h4>Faculty Login</h4>
+
+                <div class="form-col">
+                    <input  type="text" id="username" class="input_field" name="username" placeholder="Enter your Username" required>
+                </div>
+                <div class="form-col">
+
+                <select class="sel1" id="department" name="department" onkeyup="validateDepartment()" >
+                    <option value="select department">Select Department</option>
+                    <option value="BCA">BCA</option>
+                    <option value="BSc">BSc</option>
+                    <option value="BCom">BCom</option>
+                    <option value="LIBRARY">LIBRARY</option>
+                    <option value="ACCOUNTS">ACCOUNTS</option>
+                    <option value="SPORTS">SPORTS</option>
+                    </select>
+                </div>
+        <div class="form-col">
+
+                <input type="text" id="password"class="input_field" name="password" placeholder="Enter your Password " required>
+        </div>
+        <div  class="form-col">
+            <button class="submitbtn" type="submit">LOGIN</button><br>
+
+        </div>
+                <!--                 
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    <strong style="color:white;">Message:</strong> {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %} -->
+            </form>
+
+        </div>
+    </div>
+        
+</div>
+</div>
+
+</section>
+
+
+
+        <footer style="margin-top: 700px;">
+            <div class="footer-col">
+              <h3>Front end</h3>
+              <li><i class="fa-brands fa-python"></i>Python</li>
+              <li><i class="fa-brands fa-python"></i>Django</li>
+              <li><i class="fa-brands fa-html5"></i>HTML</li>
+              <li><i class="fa-brands fa-css3"></i>CSS</li>
+              <li><i class="fa-brands fa-js"></i>Java Script</li>
+            </div>
+            <div class="footer-col">
+              <h3>Back end</h3>
+              <li><i class="fa-solid fa-database"></i>MySQL</li>
+             
+            </div>
+            <div class="footer-col">
+              <h3>IDE</h3>
+              <li><i class="fa-solid fa-code"></i>VS Code</li>
+            </div>
+            <div class="footer-col">
+              <h3>Referenses</h3>
+              <li><i class="fa-brands fa-internet-explorer"></i>Website</li>
+              <li><i class="fa-solid fa-book"></i>Books</li>
+            </div>
+            <div class="footer-col">
+              <h3>Guided By</h3>
+              <p><i class="fa-solid fa-circle-user"></i>Mr.Praveen Kumar(HOD)</p>
+            </div>
+          </footer>
+        <script src="" async defer></script>
+        <script>
+        var x=document.getElementById('slogin');
+        var y=document.getElementById('flogin');
+        var z=document.getElementById('btn');
+        function register()
+        {
+            x.style.left='-300px';
+            y.style.left='10px';
+            z.style.left='100px';
+        }
+        function login()
+        {
+            x.style.left='50px';
+            y.style.left='950px';
+            z.style.left='10px';
+        }
+
+        </script>
+        <script>
+            var modal=document.getElementById('sloginform');
+            window.onclick=function(event)
+            {
+                if(event.target==modal)
+                {
+                    modal.style.display="none"
+                }
+            }
+        </script>
+    </body>
+</html>

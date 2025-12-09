@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,100&family=Fira+Sans+Condensed:ital,wght@0,300;0,400;1,200&family=Inconsolata:wght@700&family=Kaushan+Script&family=Lobster&family=Mochiy+Pop+One&family=Oswald&family=Secular+One&family=Tiro+Gurmukhi&family=Uchen&display=swap');
+
+.title h1{
+    font-size: 35px;
+    font-weight: bold;
+    /* font-family: 'Lobster', cursive; */
+    color: black;
+    background-color: #dddd;
+    justify-content: center;
+    padding-inline: 570px;
+    width:25%;
+    height: 50px;
+}
+.tab{
+width: 100%;
+display: flex;
+justify-content: center;
+/* font-family: 'Lobster', cursive; */
+font-family: Arial, Helvetica, sans-serif;
+overflow: auto;
+margin-top: 30px;
+border-radius: 20px;
+}
+table{
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+.tab thead th{
+    position: sticky;
+    top: 0;
+    background-color: #1e1e1e;
+    color: whitesmoke;
+    font-weight: 800;
+    font-size: 15px;
+
+}
+th,td{
+    border-bottom: 1px solid #dddd;
+    padding: 10px 20px;
+    font-size: 14px;
+    
+    height: 20px;
+}
+tr:nth-child(even){
+    background-color: #dddd;
+}
+tr:nth-child(odd){
+    background-color: #edeef1;
+}
+tr:hover td{
+    color: rgb(60, 60, 114);
+    cursor: pointer;
+    background-color: #ffffff;
+}td a{
+    border: none;
+    padding: 7px 20px;
+    border-radius: 20px;
+    background-color: #1e1e1e;
+    color: whitesmoke;
+}
+#b1{
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    margin-left: 300px;
+    margin-top: 20px;
+    border-radius: 10px;
+    height: 30px;
+}
+#b2,#b3{
+    border-radius: 10px;
+    height: 30px;
+    width: 70px;
+
+}

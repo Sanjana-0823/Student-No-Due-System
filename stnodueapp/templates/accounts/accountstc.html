@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Homepg</title>
+    {% load static %}
+    <link rel="stylesheet" href="static/css/tablestyle.css"
+</head>
+<body>
+    {% include "navbaraccounts.html" %}
+    <div class="title">
+        <h1>BCA NoDue</h1>
+    </div>
+    <br><br>
+    <form action="accountstc" id="test" method="post">
+        {% csrf_token %}
+
+        <div class="tab">
+            <table class="table table-sortable" >
+                <thead>
+                    <tr>
+                        <th>Register Numbaer</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Date</th>
+                        <th>NoDue Reasons</th>
+                         <th>accounts</th>
+                        <th>Accounts Remark</th>
+                        <th>Actions</th>
+                       
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                    {% for n in tc_db %}
+                    <tr>
+                            <td>{{ n.regno }}</td>
+                            <td>{{ n.name }}</td>
+                            <td>{{ n.course }}</td>
+                            <td>{{ n.dateofapply|date:'Y-m-d' }}</td>
+                            <td>{{ n.noduereasons }}</td>
+                            <td>{{ n.accounts }}</td>
+                            <td>{{ n.accountsremark }}</td>
+                       
+                            <td>
+                                <a href="/accountstcedit/{{ n.id }} "> View Details </a>
+                                <!-- <a href="/accountshalldelete/{{ nodue.id }} "> Delete </a> -->
+                                
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbodca
+     </table> 
+        </div>
+    </form> 
+</body>
+
+</html>

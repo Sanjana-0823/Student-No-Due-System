@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Homepg</title>
+    {% load static %}
+    <link rel="stylesheet" href="static/css/tablestyle.css"
+</head>
+<body>
+    {% include "navbaraccounts.html" %}
+    <div class="title">
+        <h1>BCA NoDue</h1>
+    </div>
+    <br><br>
+    <form action="accountshall" id="test" method="post">
+        {% csrf_token %}
+    
+
+    
+        <div class="tab">
+            <table class="table table-sortable" >
+                <thead>
+                    <tr>
+                        <th>Register Numbaer</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Year</th>
+                        <th>Date</th>
+                        <th>NoDue Reasons</th>
+                         <th>accounts</th>
+                        <th>Accounts Remark</th>
+                        <th>Actions</th>
+                       <!-- <th>sports</th>
+                        <th>sportsremark</th>
+                        <th>library</th>
+                        <th>libraryremark</th>
+                        <th>hod</th>
+                        <th>hodremark</th>
+                        <th>admin</th>
+                        -->
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                    {% for nodue in hallticket %}
+                    <tr>
+                            <td>{{ nodue.regno }}</td>
+                            <td>{{ nodue.name }}</td>
+                            <td>{{ nodue.course }}</td>
+                            <td>{{ nodue.year }}</td>
+                            <td>{{ nodue.date|date:'Y-m-d' }}</td>
+                            <td>{{ nodue.noduereasons }}</td>
+                            <td>{{ nodue.accounts }}</td>
+                            <td>{{ nodue.accountsremark }}</td>
+                            <!--  <td>{{ nodue.library }}</td>
+                            <td>{{ nodue.libraryremark }}</td>
+                            <td>{{ nodue.sports }}</td>
+                            <td>{{ nodue.sportsremark }}</td>
+                            <td>{{ nodue.hod }}</td>
+                            <td>{{ nodue.hodremark }}</td>
+                            <td>{{ nodue.admin }}</td> -->
+                            <td>
+                                <a href="/accountshalledit/{{ nodue.id }} "> select </a>
+                                <!-- <a href="/accountshalldelete/{{ nodue.id }} "> Delete </a> -->
+                                
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbodca
+     </table> 
+        </div>
+    </form>
+    <script>
+    // var t = document.getElementById('test');
+    // function fyear()
+    // {
+    //     t.action="/bscfrstyearh";
+    // }
+    // function syear()
+    // {
+    //     t.action="/bscsecndyearh";
+
+    // }
+    // function tyear()
+    // {
+    //     t.action="/bscthirdyearh";
+
+    // }
+    // function bsccourse()
+    // {
+    //     t.action="/bsccourse";
+    // }
+    </script> 
+</body>
+
+</html>

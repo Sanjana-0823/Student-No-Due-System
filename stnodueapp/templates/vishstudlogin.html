@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/css/vish.css">
+        <script src="https://kit.fontawesome.com/9a7209e4cb.js" crossorigin="anonymous"></script>
+<style>
+    .navbar .active {
+    color:white;
+    background-color:rgb(248, 242, 242);
+    border:.2rem solid #29d9d5 ;
+    border-radius: 14px;
+   }
+
+
+#faclogin .form{
+    margin-left: 800px;
+    margin-top: 90px;
+    height: 500px;
+    width: 500px;
+    border:.2rem solid #7e9f9e ;
+
+    background-color:transparent;
+}
+
+   #faclogin .form .form-col input{
+    
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 3px;
+    width: 300px;
+    margin-left: 80px;
+    border: none;
+    /* background: #fff; */
+    color: #7e7c87;
+    border:.2rem solid #7e9f9e ;
+    background-color: transparent;
+    outline: none;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+}
+
+#faclogin .form .submitbtn{
+
+    margin-top: 1rem;
+display: inline-block;
+padding: 1rem 3rem;
+font-size: 1.7rem;
+color:#29d9d5 ;
+border:.2rem solid #29d9d5 ;
+border-radius: 5rem;
+cursor: pointer;
+background: none;
+margin-left: 170px;
+    
+}
+#faclogin .form .submitbtn:hover{
+    background: #29d9d5;
+    color: #111;
+}
+
+   
+  #faclogin .form .form-col select{
+    
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 3px;
+    border: none;
+    border:.2rem solid #7e9f9e ;
+    width: 300px;
+    margin-left: 80px;
+    background-color: transparent;
+    color: #7e7c87;
+    outline: none;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+}    
+
+#faclogin .form h4{
+
+    font-weight: bolder;
+    color: transparent;
+    -webkit-text-stroke: .1rem #29d9d5;
+    font-size: 4vw;
+    /* border-bottom:.2rem  solid #7e9f9e ; */
+    display: block;
+    margin-left: 30px;
+ /* font-size: 24px;
+ color:;
+ line-height: 30px;
+ margin-left: 100px;
+ margin-bottom: 10px; */
+}
+</style>
+    </head>
+    <body>
+        <header class="header">            
+            <a href="#" class="logo"><i class="fa-solid fa-paper-plane"></i>SAT</a>
+
+            <nav class="navbar">
+                <a  href="vish">Home</a>
+                <a  href="vishlogin">Faculty</a>
+                <a class="active" href="#">Student</a>
+                <a href="vishadmin">Admin</a>
+                <a href="#">About</a>
+                <a href="#">Contactus</a>   
+            </nav>
+
+        </header>
+        <br><br><br><br>
+
+        <section id="faclogin">
+                <div>
+                    <img style="height:600px;width: 700px; position:absolute; margin-top: 50px;margin-left: 20px;background: linear-gradient(#29d9d5 ,#7e7c87);" src="/static/vish1.jpg" alt="">
+                </div>
+                
+            <div class="form">
+                <form method="post" id=""  action="login" >
+                    {% csrf_token %}
+                    <h4>Student Login</h4>
+                    <br><br>
+                    <div class="form-col">
+                        <input type="text" id="regno"  name="regno" placeholder="Enter your Register Number" required>
+        
+                    </div>
+                    <br>
+                    <div class="form-col">
+                    
+                    <select  class="sel1" id="course" name="course" >
+                        <option value="Select Course">Select Course</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BCom">BCom</option>
+                        <option value="BSc">BSc</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-col">
+                    
+                    <input type="text" id="pass1" name="pass1"class="input_field" placeholder="Enter your Password " required>
+                </div>
+                   <br>
+                <div  class="form-col">
+                    <button class="submitbtn" type="submit">LOGIN</button><br>
+        
+                </div>
+        </section>
+          
+
+
+        <footer  style="margin-top: 270px;">
+            <div class="footer-col">
+              <h3>Front end</h3>
+              <li><i class="fa-brands fa-python"></i>Python</li>
+              <li><i class="fa-brands fa-python"></i>Django</li>
+              <li><i class="fa-brands fa-html5"></i>HTML</li>
+              <li><i class="fa-brands fa-css3"></i>CSS</li>
+              <li><i class="fa-brands fa-js"></i>Java Script</li>
+            </div>
+            <div class="footer-col">
+              <h3>Back end</h3>
+              <li><i class="fa-solid fa-database"></i>MySQL</li>
+             
+            </div>
+            <div class="footer-col">
+              <h3>IDE</h3>
+              <li><i class="fa-solid fa-code"></i>VS Code</li>
+            </div>
+            <div class="footer-col">
+              <h3>Referenses</h3>
+              <li><i class="fa-brands fa-internet-explorer"></i>Website</li>
+              <li><i class="fa-solid fa-book"></i>Books</li>
+            </div>
+            <div class="footer-col">
+              <h3>Guided By</h3>
+              <p><i class="fa-solid fa-circle-user"></i>Mr.Praveen Kumar(HOD)</p>
+            </div>
+          </footer>
+      <footer>
+      
+        <script src="" async defer></script>
+    </body>
+</html>

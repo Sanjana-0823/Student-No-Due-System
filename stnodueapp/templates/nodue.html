@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="static/css/style.css">
+<style>
+    .container{
+   background-color:whitesmoke;
+   border-radius: 5px;
+   margin-left: 300px;
+   margin-top: 20px;
+   margin-block: 1px;
+   align-items: center;
+   min-height: 90vh;
+   margin-right: 50px;
+   justify-items: center;
+   box-shadow: 2px 6px 6px 6px rgba(0,0,0,0.3);
+   width: 900px;     
+}
+    label{
+        font-size: 20px;
+        font-weight: bold;
+        font-family: 'Times New Roman', Times, serif;
+        padding-left: 70px;
+        width: 40px;
+    }
+    
+    .reg{
+        margin-left: 155px;
+    }
+    .co{
+        margin-left: 380px;
+    }
+    .ya{
+        margin-left: 260px;
+    }
+   
+   
+   .na{
+margin-left: 250px;
+   }
+   .date{
+        margin-left: 258px;
+    }
+    .no{
+        margin-left: 380px;
+        margin-top: 10px;
+    }
+   .chkbox{
+    margin-top: -10px;
+    margin-left: 290px;
+    
+   }
+   h4{
+    margin-left: 490px;
+    margin-top: -23px;
+    position: absolute;
+   }
+ .submit-btn1{
+
+   background-color: #1b1b1b;
+   color: whitesmoke;
+   width: 130px;
+   border: 2px solid #1e1e1e;
+   height: 35px;
+   border-radius: 30px;
+   font-size: 12px;
+   font-weight: bolder;
+   margin-left: -200px;
+   text-align: center;
+   justify-content: center;
+
+    margin-left: -200px;
+    position: absolute;
+    margin-top: -8px;
+ }
+ .submit-btn2{
+    background-color: #1b1b1b;
+   color: whitesmoke;
+   width: 130px;
+   border: 2px solid #1e1e1e;
+   height: 35px;
+   border-radius: 30px;
+   font-size: 12px;
+   font-weight: bolder;
+   margin-left: -200px;
+   text-align: center;
+   justify-content: center;
+
+   margin-left: -400px;
+   position: absolute;
+   margin-top: -8px;
+}
+ .submit-btn3{
+    background-color: #1b1b1b;
+   color: whitesmoke;
+   width: 130px;
+   border: 2px solid #1e1e1e;
+   height: 35px;
+   border-radius: 30px;
+   font-size: 12px;
+   font-weight: bolder;
+   margin-left: -200px;
+   text-align: center;
+   justify-content: center;
+
+   margin-left: -100px;
+   position: absolute;
+   margin-top: -8px;
+}
+select{
+    width: 40%;
+   padding: 10px 20px;
+   outline: none;
+   border: 1px solid #607d8b;
+   font-size: 14px;
+   letter-spacing: 1px;
+   background: transparent;
+   border-radius: 20px;
+   color: #607d8b;
+}
+ .n1,.n2,.n3,.n4{
+    
+   width: 40%;
+   padding: 10px 20px;
+   outline: none;
+   
+   font-size: 14px;
+   letter-spacing: 1px;
+   background: transparent;
+   border-radius: 20px;
+   margin-left: 220px;
+   color: #607d8b;
+}
+
+
+
+</style>
+    </head>
+    <body>
+    {% include "navbarbcastud.html" %}
+    <br><br><br><br><br><br><br>
+    <div id="body" class="container">
+        <div class="header">
+            <h1>APPLY NODUE</h1>    
+        </div>
+        <br>
+        <div>
+            <label style="position: absolute;" for=""> SelectReasons </label><br>
+
+            <input id="hallchk" type="radio" class="chkbox" name="h" value="Hallticket" onchange="s()"><h4>Hall Ticket Due</h4>
+            <br>
+
+            <input id="tcchk" type="radio"class="chkbox" name="h" value="TC" onchange="s()"><h4>Transfer Certificate Due</h4>
+            <br>
+            <input id="libchk" type="radio"class="chkbox" name="h" value="Library" onchange="s()"><h4>Library Due</h4>
+            <br>
+            <input id="spchk" type="radio"class="chkbox" name="h" value="Sports" onchange="s()"><h4>Sports Due</h4>
+
+        </div>
+        
+
+        <form id="hallticket" action="hallnodue" method="POST" hidden>
+            {% csrf_token %}
+            <input class="n1" type="text" id="noduereasons1"  name="noduereasons"  readonly/>
+            
+            <br><br>
+            <div class="form-control">
+                <label for="">Register Number</label>
+                <input class="reg" type="text" name="regno" id="regno" value="{{request.session.student_regno}}" readonly  placeholder="Register Number" >
+                </div>
+                <div class="form-control">
+                <label for="">Name</label>
+                <input class="na" type="text" name="name" id="name" value="{{request.session.student_name}}" readonly  placeholder="name" >
+            </div>
+            <br>
+            <div  class="form-control">
+                <label for="">Course</label>
+                <br>
+                <input class="co" type="text" name="course" id="" value="{{request.session.student_course}}" readonly  placeholder="course">
+
+            </div>
+            <div class="form-control">
+                <label for="">Year</label>
+                <input class="ya" type="text" name="year" id="year" value="{{request.session.student_year}}" readonly  placeholder="year">
+            </div>
+            <div class="form-control">
+                <label for="">Date</label>
+                <input class="date" type="text" name="date" id="tod3">
+            </div>
+            <input type="text" name="library" id="library" placeholder="library" style="visibility: hidden;">
+            <textarea name="libraryremark" id="libraryremark" cols="15" rows="4" style="resize: none;visibility: hidden;" placeholder="Library Remark"></textarea>
+            <input type="text" name="accounts" id="accounts" placeholder="accounts" style="visibility: hidden;">
+            <textarea name="accountsremark" id="accountsremark" cols="15" rows="4" style="resize: none;visibility: hidden;" placeholder="accounts Remark"></textarea>
+            <input type="text" name="sports" id="sports" placeholder="sports" style="visibility: hidden;">
+            <textarea name="sportsremark" id="sportsremark" cols="15" rows="4" style="resize: none;visibility: hidden;" placeholder="sports Remark"></textarea>            
+            <input type="text" name="hod" id="hod" placeholder="hod" style="visibility: hidden;">
+            <textarea name="hodremark" id="hodremark" cols="15" rows="4" style="resize: none;visibility: hidden;" placeholder="hod Remark"></textarea>
+            <input type="text" name="admin" id="admin" placeholder="admin" style="visibility: hidden;">
+         
+            <button type="submit" class='submit-btn1' >RAISE NODUE</button>    
+        
+        </form>
+
+
+        <form  id="tc" action="tcnodue" method="POST" hidden>
+            {% csrf_token %}
+            
+            
+            <input  class="n2" type="text" id="noduereasons2"  name="noduereasons"  readonly/>
+        <br><br>
+            <div class="form-control">
+                <label for="">Register Number</label>
+                <input class="reg" type="text" name="regno" id="regno" value="{{request.session.student_regno}}" readonly  placeholder="Register Number" >
+                </div>
+                <div class="form-control">
+                <label for="">Name</label>
+                <input class="na" type="text" name="name" id="name" value="{{request.session.student_name}}" readonly  placeholder="name" >
+            </div>
+            <div class="form-control">
+                <label for="">Gender</label>
+                <!-- <input type="text" name="gender" id="gender"   placeholder="gender"> -->
+                <input style="margin-left: 202px;" type="radio" name="gender" value="female" id="gender"><h4 style="margin-left: 552px;">Female</h4>
+                <input style="margin-left: 340px;" type="radio" name="gender" value="male" id="gender"><h4 style="margin-left: 552px;">Male</h4>
+
+            </div>
+            <div class="form-control">
+                <label for="">Date Of Birth</label>
+                <input style="margin-left: 380px;" class="date" type="date"  name="dob" id="dob" value="dob" >
+            </div>
+            <div class="form-control">
+                <label for="">Father Name</label>
+                <input style="margin-left: 380px;"  type="text" name="father_name" id="father_name"   placeholder="father_name">
+            </div>
+            <div class="form-control">
+                <label for="">Mother Name</label>
+                <input style="margin-left: 380px;"  type="text" name="mother_name" id="mother_name"    placeholder="mother_name">
+            </div>
+            <div class="form-control">
+                <label for="">Nationality</label>
+                <select style="margin-left: 380px;" id="nationality" name="nationality">
+                    <option value="select nationality">Select Nationality</option>
+                    <option value="India">India</option>
+                    <option value="China">China</option>
+                    <option value="United States of America">United States of America</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Sri Lanka">Sri Lanka</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label for="">Date Of Admission</label>
+                <input  style="margin-left: 380px;" class="date" type="date"  name="addate" id="addate" value="addate" >
+            </div>
+            <div class="form-control">
+                <label for="">Course</label>
+                <input style="margin-left: 240px;"  type="text" name="course" id="" value="{{request.session.student_course}}" readonly  placeholder="course">
+            </div>
+            <div class="form-control">
+                <label for="">Date of Application</label>
+                <input style="margin-left: 380px;" class="date" type="text" name="dateofapply" id="tod2">
+            </div>
+            
+            <input type="text" name="accounts" id="accounts" placeholder="accounts" style="visibility: hidden;">
+            <textarea name="accountsremark" id="accountsremark" cols="15" rows="4" style="resize: none;visibility: hidden;" placeholder="accounts Remark"></textarea>
+            <input type="text" name="hod" id="hod" placeholder="hod" style="visibility: hidden;">
+            <textarea name="hodremark" id="hodremark" cols="15" rows="4" style="resize: none;visibility: hidden;" placeholder="hod Remark"></textarea>
+            <input type="text" name="admin" id="admin" placeholder="admin" style="visibility: hidden;">
+         
+            <button type="submit" class='submit-btn2' >RAISE NODUE</button>
+
+        </form>
+        <form id="libraryform" action="librarynodue" method="POST" hidden>
+            {% csrf_token %}
+            
+        <input class="n3" type="text" id="noduereasons3"  name="noduereasons"  readonly/>
+            <br><br>
+
+            <div class="form-control">
+                <label for="">Register Number</label>
+                <input class="reg" type="text" name="regno" id="regno" value="{{request.session.student_regno}}" readonly  placeholder="Register Number" >
+                </div>
+                <div class="form-control">
+                <label for="">Name</label>
+                <input class="na" type="text" name="name" id="name" value="{{request.session.student_name}}" readonly  placeholder="name" >
+            </div>
+            <div class="form-control">
+                <label for="">Course</label>
+                <input style="margin-left: 240px;" class="co" type="text" name="course" id="" value="{{request.session.student_course}}" readonly  placeholder="course">
+            </div>
+            <div class="form-control">
+                <label for="">Year</label>
+                <input class="ya" type="text" name="year" id="year" value="{{request.session.student_year}}" readonly  placeholder="year">
+            </div>
+            <div class="form-control">
+                <label for="">Date</label>
+                <input class="date" type="text" name="date" id="tod1">
+            </div>
+            
+            <!-- <input class="no" type="text" id="noduereasons"  name="noduereasons" readonly/> -->
+            <input type="text" name="library" id="library" placeholder="library" style="visibility: hidden;">
+            <textarea name="libraryremark" id="libraryremark" cols="15" rows="4" style="resize: none;visibility: hidden;" placeholder="Library Remark"></textarea>
+            <input type="text" name="admin" id="admin" placeholder="admin" style="visibility: hidden;">
+         
+            <button type="submit" class='submit-btn3' >RAISE NODUE</button>    
+        
+        </form>
+        <form id="sportsform" action="sportsnodue" method="POST" hidden>
+            {% csrf_token %}
+            <input class="n4"  type="text" id="noduereasons4"  name="noduereasons"  readonly/>
+            <br><br>
+
+            <div class="form-control">
+                <label for="">Register Number</label>
+                <input class="reg" type="text" name="regno" id="regno" value="{{request.session.student_regno}}" readonly  placeholder="Register Number" >
+                </div>
+                <div class="form-control">
+                <label for="">Name</label>
+                <input class="na" type="text" name="name" id="name" value="{{request.session.student_name}}" readonly  placeholder="name" >
+            </div>
+            <div class="form-control">
+                <label for="">Course</label>
+                <input style="margin-left: 240px;" class="co" type="text" name="course" id="" value="{{request.session.student_course}}" readonly  placeholder="course">
+            </div>
+            <div class="form-control">
+                <label for="">Year</label>
+                <input class="ya" type="text" name="year" id="year" value="{{request.session.student_year}}" readonly  placeholder="year">
+            </div>
+            <div class="form-control">
+                <label for="">Date</label>
+                <input class="date" type="text" name="date" id="tod">
+                <!-- <input class="date" type="date"  name="date" id="date" value="date"  > -->
+            </div>
+            
+            <!-- <input class="no" type="text" id="noduereasons"  name="noduereasons" readonly/> -->
+
+            <input type="text" name="sports" id="sports" placeholder="sports" style="visibility: hidden;">
+            <textarea name="sportsremark" id="sportsremark" cols="15" rows="4" style="resize: none;visibility: hidden;" placeholder="sports Remark"></textarea>            
+            <input type="text" name="admin" id="admin" placeholder="admin" style="visibility: hidden;">
+         
+            <button type="submit" class='submit-btn3' >RAISE NODUE</button>    
+        
+        </form>
+    </div>
+<script>
+    var x=document.getElementById('hallticket')
+    var y=document.getElementById('tc')
+    var z=document.getElementById('libraryform')
+    var w=document.getElementById('sportsform')
+    var a=document.getElementById('tcchk')
+    var b=document.getElementById('hallchk')
+    var c=document.getElementById('libchk')
+    var d=document.getElementById('spchk')
+    var n=document.getElementById('noduereasons1')
+    var m=document.getElementById('noduereasons2')
+    var l=document.getElementById('noduereasons3')
+    var sp=document.getElementById('noduereasons4')
+  
+
+
+    function s()
+    {
+        if(b.checked)
+        {
+            n.value="Hallticket"
+            y.hidden=true
+            x.hidden=false
+            z.hidden=true
+            w.hidden=true
+            var f=document.getElementById('tod3');
+    var today = new Date();
+    
+    var datet =today.getDate()+'-'+(today.getMonth()+1)+'-'+ today.getFullYear();
+    f.value=datet;
+   
+        }
+        if(a.checked)
+        {
+            m.value="TC"
+            x.hidden=true
+            y.hidden=false
+            z.hidden=true
+            w.hidden=true
+            var f=document.getElementById('tod2');
+    var today = new Date();
+    
+    var datet =today.getDate()+'-'+(today.getMonth()+1)+'-'+ today.getFullYear();
+    f.value=datet;
+   
+        }
+        if(c.checked)
+        {
+            l.value="Library"
+            y.hidden=true
+            x.hidden=true
+            z.hidden=false
+            w.hidden=true
+            var f=document.getElementById('tod1');
+    var today = new Date();
+    
+    var datet =today.getDate()+'-'+(today.getMonth()+1)+'-'+ today.getFullYear();
+    f.value=datet;
+   
+        }
+        if(d.checked)
+        {
+            sp.value="Sports"
+            y.hidden=true
+            x.hidden=true
+            z.hidden=true
+            w.hidden=false
+           
+var f=document.getElementById('tod');
+    var today = new Date();
+    
+    var datet =today.getDate()+'-'+(today.getMonth()+1)+'-'+ today.getFullYear();
+    f.value=datet;
+   
+        }
+    }
+
+
+</script>
+
+
+      
+    </body>
+</html>

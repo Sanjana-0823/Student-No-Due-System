@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Homepg</title>
+    {% load static %}
+    <link rel="stylesheet" href="static/css/tablestyle1.css"
+
+</head>
+<body>
+    {% include "navbaradmin.html" %}
+    <div class="title">
+        <h1>BSc Student List</h1>
+    </div>
+    <form action="bsclist" id="test" method="post">
+        {% csrf_token %}
+    
+    <button id="b1"type="submit" onclick="fyear()">1st Year</button>
+    <button id="b2" type="submit" onclick="syear()">2nd Year</button>
+    <button id="b3"type="submit" onclick="tyear()">3rd Year</button>
+
+    <button  style="visibility: hidden;" type="submit" onclick="bsccourse()">BSc</button>
+    <div class="tab">
+        <table class="table table-sortable" >
+            <thead>
+                <tr>
+                    <th>Register Number</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Year</th>                 
+                    <th>Course</th>
+                    <th>Password</th>
+                    <th>Action</th>                  
+                </tr>
+                
+            </thead>
+            <tbody>
+                {% for stude in student %}
+                <tr>
+                    <td>{{ stude.regno }}</td>
+                    <td>{{ stude.name }}</td>
+                    <td>{{ stude.email }}</td>
+                    <td>{{ stude.gender }}</td>
+                    <td>{{ stude.course }}</td>
+                    <td>{{ stude.year }}</td>
+                    <td>{{ stude.pass1 }}</td>
+                    
+                    <td>
+                        <a href="/bscedit/{{ stude.id }} "> Edit </a>
+                        <a href="/delete3/{{ stude.id }} "> Delete </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+     </table> 
+    </div>
+    </form> 
+</body>
+<script>
+    var t = document.getElementById('test');
+    function fyear()
+    {
+        t.action="/bscfrstyear";
+    }
+    function syear()
+    {
+        t.action="/bscsecndyear";
+
+    }
+    function tyear()
+    {
+        t.action="/bscthirdyear";
+
+    }
+    function bsccourse()
+    {
+        t.action="/bsccourse";
+    }
+</script>
+</html>

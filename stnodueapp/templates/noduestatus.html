@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Homepg</title>
+    {% load static %}
+    <link rel="stylesheet" href="static/css/tablestyle1.css"
+
+</head>
+<body>
+    {% include "navbarbcastud.html" %}
+    <br><br><br><br><br> <br>
+    <div style="width:100%;background-color:rgb(229, 219, 221);" class="title">
+        <h1 style="margin-left: 150px;">STATUS</h1>
+    </div>
+    <form action="noduestatus" id="test" method="post">
+        {% csrf_token %}
+        <br><br><br><br>
+        
+        <div class="tab">
+            <table class="table table-sortable" id="table" >
+ 
+            <thead>
+                <tr>
+                    <th>Register Number</th>
+                    <th>Name</th>
+                    <!-- <th>Course</th>
+                    <th>Year</th> -->
+                    <th>Date</th>
+                    <th>NoDue Reasons</th>
+                    <!-- <th>Library</th>
+                    <th>libraryremark</th>
+                    <th>accounts</th>
+                    <th>accountsremark</th>
+                    <th>sports</th>
+                    <th>sportsremark</th>
+                    <th>hod</th>
+                    <th>hodremark</th> -->
+                    <th>Admin</th>
+                    <th>Actions</th>
+                    <th>Certificate</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                {% for noduee in hallticket %}
+                <tr>
+                        <td>{{ noduee.regno }}</td>
+                        <td>{{ noduee.name }}</td>
+                        <td>{{ noduee.date|date:'Y-m-d' }}</td>
+                        <td>{{ noduee.noduereasons }}</td>
+                        <td>{{ noduee.admin }}</td>
+                        <td>
+                            <a href="/hallviewdetails/{{ noduee.id }} ">view Details</a>
+                            <a href="/noduestatusdeletehall/{{ noduee.regno }} "> Delete </a>
+                            
+                        </td>
+                        <td id="hpdf" hidden >
+                            <a href="/some_view/{{ noduee.regno }}">Download Certificate</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% for nodue in tc_db %}
+                <tr>
+                        <td>{{ nodue.regno }}</td>
+                        <td>{{ nodue.name }}</td>
+                        <td>{{ nodue.dateofapply|date:'Y-m-d' }}</td>
+                        <td>{{ nodue.noduereasons }}</td>
+                        <td>{{ nodue.admin }}</td>
+                        <td>
+                            <a href="/tcviewdetails/{{ nodue.id }} ">view Details</a>
+                            <a href="/noduestatusdeletetc/{{ nodue.regno }} "> Delete </a>
+                            
+                        </td>
+                        <td id="hpdf" hidden >
+                            <a href="/some_view/{{ nodue.regno }}">Download Certificate</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% for nodu in sportsdb %}
+                <tr>
+                        <td>{{ nodu.regno }}</td>
+                        <td>{{ nodu.name }}</td>
+                        <td>{{ nodu.date|date:'Y-m-d' }}</td>
+
+                        <td>{{ nodu.noduereasons }}</td>
+                        <td>{{ nodu.admin }}</td>
+                        <td>
+                            <a href="/sportsviewdetails/{{ nodu.id }} ">view Details</a>
+                            <a href="/noduestatusdeletesports/{{ nodu.regno }}"> Delete </a>
+                            
+                        </td>
+                        <td id="hpdf" hidden>
+                            <a href="/some_view/{{ nodu.regno }}">Download Certificate</a>
+                        </td>
+                    </tr>
+                {% endfor %}{% for nod in librarydb %}
+                <tr>
+                        <td>{{ nod.regno }}</td>
+                        <td>{{ nod.name }}</td>
+                        <td>{{ nod.date|date:'Y-m-d' }}</td>
+                        <td>{{ nod.noduereasons }}</td>
+                        <td>{{ nod.admin }}</td>
+                        <td>
+                            <a href="/libraryviewdetails/{{ nod.id }} ">view Details</a>
+                            <a href="/noduestatusdeletelibrary/{{ nod.regno }}"> Delete </a>
+                            
+                        </td>
+                        <td id="hpf" hidden>
+                            <button><a href="/some_view/{{ nod.regno }}">Download Certificate</a></button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <input type="text" name="h" id="h" hidden>
+            </tbody>
+     </table> 
+        </div>
+    </form> 
+    <script>
+        var tablee = document.getElementById("table");
+        for(var i = 1; i < tablee.rows.length; i++)
+            {
+                
+
+                if(tablee.rows[i].cells[4].innerText=="Approve")
+                {
+                    document.getElementById('h').value=tablee.rows[i].cells[4].innerText;
+                    tablee.rows[i].cells[6].hidden=false;
+                }
+            }
+    </script>
+    <script>
+        // var objCells = tablee.rows.item(i).cells;
+        // var mytab = document.getElementById('table');
+        // for(var i = 1; i < tablee.rows.length; i++)
+        // {
+        //     if(table.rows[i].cells[4].innerText="Approve")
+        //     {
+        //         document.getElementById('hpdf').hidden=false;
+        //     }
+        // }
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!--
+    <style>
+.container{
+    
+    background-color:whitesmoke;
+    border-radius: 5px;
+    margin-left: 400px;
+    
+    margin-block: 30px;
+    align-items: center;
+    min-height: 80vh;
+    margin-right: 50px;
+    height: 600px;
+    justify-items: center;
+    box-shadow: 2px 6px 6px 6px rgba(0,0,0,0.3);
+    width: 700px;     
+ }
+ .header{
+            margin: 0;
+   padding: 0px 0px;
+   border-bottom: 2px solid #1e1e1e;
+   background-color: #1e1e1e;   
+   color: whitesmoke;
+}
+.header h1{
+   margin: 0;
+   margin-left: 280px;
+font-family:Arial, Helvetica, sans-serif;
+height: 49px;
+}
+h4{
+    margin-left: 100px;position: absolute;
+    
+}
+h2{
+    margin-left:100px ;
+    
+    margin-top: 10px;
+    
+    
+
+    font-size: 20px;position: relative;
+}
+    </style>
+
+</head>
+<body>
+   
+    <div class="container">
+        <div class="header">
+            <h1>STATUS</h1>    
+        </div>
+    <form action="bcastatus" id="test" method="post">
+        {% csrf_token %}
+
+    <br>
+        <div style="font-size: 20px ; text-align:center ;">   
+            <h4>reasons</h4>
+            {% for nodue in bcaapply %}
+            <input type="text" name="noduereasons" id="noduereasons" value=" {{ nodue.noduereasons }}  ">                     
+            {% endfor %}
+            <br>
+                <h4>Library</h4>
+               <h2>{% for nodue in bcaapply %}
+                    {{ nodue.library }}                     
+                {% endfor %}</h2> 
+                <br>
+                <h4>Library remark</h4>
+                <h2>{% for nodue in bcaapply %}
+                    {{ nodue.libraryremark }}                     
+                {% endfor %}</h2> 
+                <br>
+                <h4>Accounts</h4>
+                <h2>{% for nodue in bcaapply %}
+                    {{ nodue.accounts }}                     
+                {% endfor %}</h2> 
+                <br>
+                <h4>Accounts Remark</h4>
+                <h2>{% for nodue in bcaapply %}
+                    {{ nodue.accountsremark }}                     
+                {% endfor %}</h2> 
+                <br>
+                <h4>Sports</h4>
+                <h2>{% for nodue in bcaapply %}
+                    {{ nodue.sports }}                     
+                {% endfor %}</h2> 
+                <br>
+                <h4>Sports Remark</h4>
+                <h2>{% for nodue in bcaapply %}
+                    {{ nodue.sportsremark }}                     
+                {% endfor %}</h2> 
+                <br>
+                <h4>HOD</h4>
+                <h2>{% for nodue in bcaapply %}
+                    {{ nodue.hod }}                     
+                {% endfor %}</h2> 
+                <br>
+                <h4>Hod Remark</h4>
+                <h2>{% for nodue in bcaapply %}
+                    {{ nodue.hodremark }}                     
+                {% endfor %}</h2> 
+                <br>
+                 <h4>Admin</h4>
+                 <h2>{% for nodue in bcaapply %}
+                    {{ nodue.admin }}                     
+                {% endfor %}</h2> 
+            </div>
+    </form> 
+
+</body>
+
+</html> -->

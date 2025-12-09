@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Homepg</title>
+    {% load static %}
+    <link rel="stylesheet" href="static/css/tablestyle.css"
+</head>
+<body>
+    {% include "navbarsports.html" %}
+    <div class="title">
+        <h1>BSc NoDue</h1>
+    </div>
+    <br><br>
+    <form action="sportshall" id="test" method="post">
+        {% csrf_token %}
+
+        <div class="tab">
+            <table class="table table-sortable" >
+            <thead>
+                <tr>
+                    <th>Register Number</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Year</th>
+                    <th>Date</th>
+                    <th>NoDue Reasons</th>
+                    <th>Sports</th>
+                    <th>Sports Remark</th>
+                    <!-- <th>library</th>
+                    <th>libraryremark</th> -->
+                    <!-- <th>accounts</th>
+                    <th>accountsremark</th> -->
+                    <!-- <th>hod</th>
+                    <th>hodremark</th>
+                    <th>admin</th> -->
+                    <th>Actions</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                {% for nodue in hallticket %}
+                <tr>
+                        <td>{{ nodue.regno }}</td>
+                        <td>{{ nodue.name }}</td>
+                        <td>{{ nodue.course }}</td>
+                        <td>{{ nodue.year }}</td>
+                        <td>{{ nodue.date|date:'Y-m-d' }}</td>
+                        <td>{{ nodue.noduereasons }}</td>
+                        <td>{{ nodue.sports }}</td>
+                        <td>{{ nodue.sportsremark }}</td>
+                        <!-- <td>{{ nodue.library }}</td>
+                        <td>{{ nodue.libraryremark }}</td> -->
+                        <!-- <td>{{ nodue.accounts }}</td>
+                        <td>{{ nodue.accountsremark }}</td> -->
+
+                        <!--<td>{{ nodue.hod }}</td>
+                        <td>{{ nodue.hodremark }}</td> -->
+                        <!-- <td>{{ nodue.admin }}</td> -->
+                        <td>
+                            <a href="/sportshalledit/{{ nodue.id }} "> select </a>
+                            <!-- <a href="/sportshalldelete/{{ nodue.id }} "> Delete </a> -->
+                            
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+     </table> 
+        </div>
+    </form> 
+</body>
+</html>

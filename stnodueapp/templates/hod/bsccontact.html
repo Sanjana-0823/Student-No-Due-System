@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>contact</title>
+    {% load static %}
+    <link rel="stylesheet" href="static/css/tablestyle1.css"
+
+
+</head>
+<body>
+    
+    {% include "navbarhodbsc.html" %}
+
+    <form action="contactview" id="test" method="post">
+        {% csrf_token %}
+        <div class="title">
+            <h1>Contact Us</h1>
+        </div>
+    <div class="tab">
+        <table class="table table-sortable" >
+       
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Remark</th>                                  
+                </tr>
+                
+            </thead>
+            <tbody>
+                {% for stude in contactus %}
+                <tr>
+                    <td>{{ stude.name }}</td>
+                    <td>{{ stude.email }}</td>
+                    <td>{{stude.subject}}</td>
+                    <td>{{ stude.remark }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+     </table> 
+    </div>
+    </form> 
+</body>
+
+</html>

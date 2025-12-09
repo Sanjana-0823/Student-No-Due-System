@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>main</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/indexstyle1.css">
+        <script src="https://kit.fontawesome.com/9a7209e4cb.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <style>
+            #contact .form{
+    width: 40%;
+    background: #ece9f7;
+    padding: 40px;
+    margin-left: 800px;
+    border-radius: 10px;
+}
+#contact .form button{
+    font-size: .9rem;
+    padding: 13px 25px;
+    background: rgb(21, 21, 100);
+    border-radius: 5px;
+    outline: none;
+    border:none;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+}
+          #contact .form h4{
+ font-size: 24px;
+ color: #2c234d;
+ line-height: 30px;
+ margin-left: 200px;
+ margin-bottom: 10px;
+}
+ #contact .form .form-row{
+display: flex;
+justify-content: space-between;
+width: 100%;
+
+}
+#contact .form .form-row input{
+    width: 48%;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 3px;
+    border: none;
+    background: #fff;
+    color: #7e7c87;
+    outline: none;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+}
+#contact .form .form-col input{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 3px;
+    border: none;
+    background: #fff;
+    color: #7e7c87;
+    outline: none;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+}nav li.active a{
+    color: white;
+    background-color: #1c2b46;
+    border-radius: 14px;
+   }
+#contact .form .form-col textarea{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 3px;
+    border: none;
+    background: #fff;
+    color: #7e7c87;
+    outline: none;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    resize: none;
+} 
+
+#contact .form button{
+    font-size: .9rem;
+    padding: 13px 25px;
+    background: rgb(21, 21, 100);
+    border-radius: 5px;
+    outline: none;
+    border:none;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+}
+
+        </style>
+    </head>
+    <body>
+        <div class="main">
+        </nav> 
+        <div class="main-bar">
+          <nav>
+            <span></span>
+            <div class="logo-header">
+            <img src="static/lo.jpg" alt="">
+              <h2 class="logo">Student</h2>
+              <h2 class="logo1">NODUE</h2>
+          </div>
+                <ul>
+                    <li ><a  href="main">HOME</a></li>
+                    <li ><a  href="index">LOGIN</a></li>
+
+                    <li  class="active"><a  href="adminlogin">ADMIN</a></li>
+                    <li ><a  href="contact">CONTACT US</a></li>
+                </ul>
+          </nav> 
+        </div>
+<br><br>
+
+<br><br>
+
+<section id="contact">
+<div>
+  <img style="height:600px;width: 700px; position:absolute; margin-top: 50px; margin-left: 20px;background-image:  linear-gradient(rgba(9,5,54,0.3),rgba(5,4,46,0.7)),url(/static/login2.jpg)" src="/static/login2.jpg" alt="">
+    </div>
+    <form class="form" style="background-color:white"method="post" id="adminlogin" action="/adminlogin" >
+                <!-- <a href="index" class="close"><i class="fa-solid fa-xmark"></i></a> -->
+                <!-- <form method="post" id="adminlogin" class="inputgrplogin" action="/adminlogin" > -->
+                    {% csrf_token %}
+                    <h4>Admin Login</h4>
+
+
+                    <div class="form-col">
+                        <input  type="text" id="username" class="input_field" name="username" placeholder="Enter your UserName" required>
+
+                    </div>
+                    <div class="form-col">
+                        <input  type="text" id="password" name="password"class="input_field" placeholder="Enter your Password " required>
+
+                    </div>
+                    <div class="form-col">
+                        <button class="submitbtn" type="submit">LOGIN</button><br>
+                    </div>
+                    
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        <strong style="color:white;">Message:</strong> {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                 
+                </form>
+
+            </div>
+        </div>
+            
+    </div>
+    </div>
+    
+    </section>
+    <footer style="margin-top: 700px;">
+        <div class="footer-col">
+          <h3>Front end</h3>
+          <li><i class="fa-brands fa-python"></i>Python</li>
+          <li><i class="fa-brands fa-python"></i>Django</li>
+          <li><i class="fa-brands fa-html5"></i>HTML</li>
+          <li><i class="fa-brands fa-css3"></i>CSS</li>
+          <li><i class="fa-brands fa-js"></i>Java Script</li>
+        </div>
+        <div class="footer-col">
+          <h3>Back end</h3>
+          <li><i class="fa-solid fa-database"></i>MySQL</li>
+         
+        </div>
+        <div class="footer-col">
+          <h3>IDE</h3>
+          <li><i class="fa-solid fa-code"></i>VS Code</li>
+        </div>
+        <div class="footer-col">
+          <h3>Referenses</h3>
+          <li><i class="fa-brands fa-internet-explorer"></i>Website</li>
+          <li><i class="fa-solid fa-book"></i>Books</li>
+        </div>
+        <div class="footer-col">
+          <h3>Guided By</h3>
+          <p><i class="fa-solid fa-circle-user"></i>Mr.Praveen Kumar(HOD)</p>
+        </div>
+      </footer>
+        
+    </body>
+</html>

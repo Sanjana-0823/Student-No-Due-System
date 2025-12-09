@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Homepg</title>
+    {% load static %}
+    <link rel="stylesheet" href="static/css/tablestyle1.css"
+
+
+</head>
+<body>
+    {% include "navbaradmin.html" %}
+
+    <form action="bcalist" id="test" method="post">
+        {% csrf_token %}
+        <div class="title">
+            <h1>BCA Student List</h1>
+        </div>
+        
+    <button id="b1"type="submit" onclick="fyear()">1st Year</button>
+    <button id="b2"type="submit" onclick="syear()">2nd Year</button>
+    <button id="b3"type="submit" onclick="tyear()">3rd Year</button>
+
+    <button  style="visibility: hidden;" type="submit" onclick="bcacourse()">BCA</button>
+    <div class="tab">
+        <table class="table table-sortable" >
+       
+            <thead>
+                <tr>
+                    <th>Register Number</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Year</th>                 
+                    <th>Course</th>
+                    <th>Password</th>
+                    <th>Action</th>                   
+                </tr>
+                
+            </thead>
+            <tbody>
+                {% for stude in student %}
+                <tr>
+
+                    <td>{{ stude.regno }}</td>
+                    <td>{{ stude.name }}</td>
+                    <td>{{ stude.email }}</td>
+                    <td>{{stude.gender}}</td>
+                    <td>{{ stude.course }}</td>
+                    <td>{{ stude.year }}</td>
+                    <td>{{ stude.pass1 }}</td>
+                    
+                    <td>
+                        <a href="/bcaedit/{{ stude.id }} "> Edit </a>
+                        <a href="/delete1/{{ stude.id }} "> Delete </a>
+                        <!-- <button id="1"class="btn btn-primary"><i class="fa fa-edit" onclick=""></i>Edit</button>
+                        <button id="2" class="btn btn-danger"><i class="fa fa-trash"></i>delete</button> -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+     </table> 
+    </div>
+    </form> 
+</body>
+<script>
+    var t = document.getElementById('test');
+    function fyear()
+    {
+        t.action="/bcafrstyear";
+    }
+    function syear()
+    {
+        t.action="/bcasecndyear";
+
+    }
+    function tyear()
+    {
+        t.action="/bcathirdyear";
+
+    }
+    function bcacourse()
+    {
+        t.action="/bcacourse";
+    }
+</script>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>student list</title>
+    {% load static %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,100&family=Fira+Sans+Condensed:ital,wght@0,300;0,400;1,200&family=Inconsolata:wght@700&family=Kaushan+Script&family=Lobster&family=Mochiy+Pop+One&family=Oswald&family=Secular+One&family=Tiro+Gurmukhi&family=Uchen&display=swap');
+             
+          .container{
+            
+           background-color:whitesmoke;
+           border-radius: 5px;
+           margin-left: 400px;
+           /* margin-top: 20px; */
+           margin-block: 30px;
+           align-items: center;
+           min-height: 80vh;
+           margin-right: 50px;
+           height: 600px;
+           justify-items: center;
+           box-shadow: 2px 6px 6px 6px rgba(0,0,0,0.3);
+           width: 700px;     
+        }input{
+            margin-top: -12px;
+            width: 250px;
+            padding: 10px 20px;
+            outline: none;
+            align-items: center;
+            border: 1px solid #607d8b;
+            font-size: 14px;
+            letter-spacing: 1px;
+            position: relative;
+            margin-left: 300px;
+            background: transparent;
+            border-radius: 20px;
+            color: black;
+        position: absolute;}
+            label{
+                width: 300px;
+                padding: 10px 20px;
+                outline: none;
+               
+                font-size: 20px;
+                letter-spacing: 1px;
+        font-family:'Times New Roman', Times, serif;
+        font-weight: bold;
+        margin-left: 50px;
+        position: absolute;
+                
+                background: transparent;
+                
+                color: black;} 
+                button{
+                    background-color: #1b1b1b;
+                    color: whitesmoke;
+                    width: 130px;
+                    border: 2px solid #1e1e1e;
+                    height: 35px;
+                    border-radius: 30px;
+                    font-size: 12px;
+                    font-weight: bolder;
+                    margin-left:250px;
+                    text-align: center;
+                    justify-content: center;
+                   position:absolute;
+                 }
+                 
+               
+                  .header{
+                    margin: 0;
+           padding: 0px 0px;
+           border-bottom: 2px solid #1e1e1e;
+           background-color: #1e1e1e;   
+           color: whitesmoke;
+        }
+        .header h1{
+           margin: 0;
+           margin-left: 230px;
+        font-family:Arial, Helvetica, sans-serif;
+        height: 49px;
+        }
+        .form{
+            padding: 20px 30px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    
+    {% include "navbaredit.html" %}
+<br><br>
+    <div class="container">
+        <div class="header">
+            <h1>Update Student</h1>    
+        </div>
+
+    <form method="POST" class="post-form" action=" /update1/{{student.id}}">
+        {% csrf_token %}
+        <br>
+        <label >Student Id </label>
+        <br>
+        <input type="text" name="id" id="id" required maxlength="20" value="{{ student.id }}" readonly/>
+        <br><br>
+        <label for="">Register Number</label>
+        <br>
+        <input type="text" name="regno" id="id regno" required maxlength="20" value="{{ student.regno }}"/>
+        <br><br>
+        <label for="">Name</label>
+        <br>
+        <input type="text" name="name" id="id name" required maxlength="20" value="{{ student.name }}"/>
+        <br><br>
+        <label for="">Gender</label>
+        <br>
+        <input type="text" name="gender" id="id gender" required maxlength="20" value="{{ student.gender }}"/>
+        <br><br>
+        <label for="">Email</label>
+        <br>
+        <input type="text" name="email" id="id email" required maxlength="20" value="{{ student.email }}"/>
+        <br><br>
+        <label for="">Course</label>
+        <br>
+        <input type="text" name="course" id="id course" required maxlength="20" value="{{ student.course }}"/>       
+        <br><br>
+        <label for="">Year</label>
+        <br>
+        <input type="text" name="year" id="id year" required maxlength="20" value="{{ student.year }}"/>
+        <br><br>
+        <label for="">Password</label>
+        <br>
+        <input type="text" name="pass1" id="id pass1" required maxlength="20" value="{{ student.pass1 }}"/>
+        <br><br>
+        <label for="">Confirm Password</label>
+        <br>
+        <input type="text" name="pass2" id="id pass2" required maxlength="20" value="{{ student.pass2 }}"/>
+        <br><br><br>
+        <button type="submit">Update</button>
+        <br><br>
+    </form>
+</body>
+</html>

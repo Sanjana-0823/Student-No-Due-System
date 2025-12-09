@@ -1,0 +1,196 @@
+*{
+    font-family: 'Poppins',sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x:hidden ;
+    scroll-behavior: smooth;
+    scroll-padding-top: 9rem;
+}
+body{
+    background-color: black;
+    overflow: hidden;
+
+}
+
+                                                        /* blue-#29d9d5
+                                                        black-#111
+                                                        lightcolor-#aaa
+                                                       
+                                                        bgcol-#222
+                                                        white-#fff
+                                                        border:.2rem solid blue
+                                                        blackbg-rgba(17,17,17,.7) */
+
+
+
+
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background:#222 ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1.5rem 9% ;
+}
+.header .navbar a{
+font-size: 20px;
+color:#aaa ;
+display: inline-block;
+word-spacing: 20px;
+margin: 0.1rem;
+
+
+padding: 5px 15px;
+border: 0;
+margin-bottom:8px ;
+font-size: 18px;
+font-weight: bold;
+opacity: 1;
+text-decoration: none;
+transition: all 0.5s;
+border-radius: 14px;
+
+}
+.header .navbar a:hover{
+    color: #29d9d5;
+}
+.logo{
+    font-size: 2.5rem;
+    color: #fff;
+    font-weight: bolder;
+   
+}
+
+.logo i{
+    color:#29d9d5 ;
+    padding-right: .5rem; 
+  }
+
+
+section{
+    padding: 3rem 9%;
+
+}.home{
+
+    margin: 0 auto;
+    margin-top: 9rem;
+    width: 90%;
+    border-radius: 1rem;
+    background:linear-gradient(rgba(17,17,17,.7),rgba(17,17,17,.7)) ,url('/static/vish.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+padding-bottom: 5rem;
+
+}
+.home .content{
+    text-align: center;
+
+}
+.home .content span{
+    font-weight: bolder;
+    color: transparent;
+    -webkit-text-stroke: .1rem #fff;
+    font-size: 4vw;
+    display: block;
+
+}
+.home .content h3{
+    font-size: 6vh;
+    color: #fff;
+
+}
+.home .content p{
+    max-width: 60rem;
+    margin: 1rem auto;
+    font-size: 1.4rem;
+    color:#aaa ;
+    line-height: 2;
+}
+.home .content .btn{
+margin-top: 1rem;
+display: inline-block;
+padding: 1rem 3rem;
+font-size: 1.7rem;
+color:#29d9d5 ;
+border:.2rem solid #29d9d5 ;
+border-radius: 5rem;
+cursor: pointer;
+background: none;
+
+
+}
+.home .content .btn:hover{
+    background: #29d9d5;
+    color: #111;
+}
+
+
+
+
+.footer .box-container .box{
+padding: 1rem 0;
+
+}
+.footer .box-container .box h3{
+    font-size: 2.2rem;
+    color: #fff;
+    padding: 1rem 0;
+}
+.footer .box-container .box p{
+    font-size: 1.4rem;
+    color: #aaa;
+    padding: 1rem 0;
+    line-height: 2;
+}
+
+footer{
+    padding: 1rem 0;
+
+    background-color:rgb(51, 47, 47);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+#footer .footer-col{
+    padding-bottom: 40px;
+}
+footer h3{
+    color: #f9f9ff;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+footer li{
+    list-style: none;
+    color: #aaa;
+    padding: 10px 0;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 00.3s ease;
+}
+footer li:hover{
+    color: #fff;
+}
+footer p{
+    color: #aaa;
+}

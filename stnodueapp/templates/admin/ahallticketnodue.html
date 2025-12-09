@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title></title>
+            {% load static %}
+            <link rel="stylesheet" href="static/css/tablestyle1.css">
+           
+            
+</head>
+<body>
+    {% include "navbaradmin.html" %}
+    <div class="title">
+        <h1>Hallticket  NODUE</h1>
+    </div><br><br>
+
+    
+    <form  action="ahallticketnodue" id="test" method="post">
+        {% csrf_token %}
+
+        <div class="tab">
+            <table class="table table-sortable" >
+            <thead>
+                <tr>
+                    <th>Register Number</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Year</th>
+                    <th>Date</th>
+                    <th>NoDue Reasons</th>
+                    <th>Admin</th>
+                    <th>Actions</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                {% for nodue in hallticket  %}
+                <tr>
+                        <td>{{ nodue.regno }}</td>
+                        <td>{{ nodue.name }}</td>
+                        <td>{{ nodue.course }}</td>
+                        <td>{{ nodue.year }}</td>
+                        <td>{{ nodue.date|date:'Y-m-d' }}</td>
+                        <td>{{ nodue.noduereasons }}</td>
+                        <!-- <td>{{ nodue.library }}</td> -->
+                        <!-- <td>{{ nodue.libraryremark }}</td> -->
+                        <!-- <td>{{ nodue.hod }}</td> -->
+                        <!-- <td>{{ nodue.hodremark }}</td> -->
+                         <!-- <td>{{ nodue.accounts }}</td> -->
+                        <!-- <td>{{ nodue.accountsremark }}</td> -->
+                        <!-- <td>{{ nodue.sports }}</td> -->
+                        <!-- <td>{{ nodue.sportsremark }}</td> -->
+                        
+                        <td>{{ nodue.admin }}</td>
+                        <td>
+                        <a href="/hallticketnodueedit/{{ nodue.id }} "> Select </a>
+                            
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+     </table> 
+        </div>
+    </form> 
+</body>
+<!-- <script>
+    var t = document.getElementById('test');
+    function fyear()
+    {
+        t.action="/bscfrstyear";
+    }
+    function syear()
+    {
+        t.action="/bscsecndyear";
+
+    }
+    function tyear()
+    {
+        t.action="/bscthirdyear";
+
+    }
+    function bsccourse()
+    {
+        t.action="/bsccourse";
+    } -->
+    <!-- // function bcafrstyr()
+    {
+         t.action="/bcafrstyr";
+     } -->
+<!-- </script> -->
+</html>

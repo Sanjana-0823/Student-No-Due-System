@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Faculty Homepg</title>
+        {% load static %}
+        <link rel="stylesheet" href="static/css/tablestyle.css"
+</head>
+<body>
+    {% include "navbarhodbsc.html" %}
+    
+    <div class="title">
+        <h1>BSc NoDue</h1>
+    </div>
+    <br><br>
+    <form action="hodbsctc" id="test" method="post">
+        {% csrf_token %}
+
+        <div class="tab">
+            <table class="table table-sortable" >
+            <thead>
+                <tr>
+                    <th>Register Number</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                   <th>Date</th>
+                    <th>NoDue Reasons</th>
+                    <th>Hod</th>
+                    <th>Hod Remark</th>
+                 
+                    <th>accounts</th>
+                    <th>accountsremark</th>
+                    
+                   
+                    <th>admin</th>
+                    <th>Actions</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                {% for nodue in tc_db %}
+                <tr>
+                    <td>{{ nodue.regno }}</td>
+                    <td>{{ nodue.name }}</td>
+                    <td>{{ nodue.course }}</td>
+                    
+                    <td>{{ nodue.dateofapply|date:'Y-m-d' }}</td>
+                    
+                    <td>{{ nodue.noduereasons }}</td>
+
+                    <td>{{ nodue.hod }}</td>
+                    <td>{{ nodue.hodremark }}</td>
+                    <td>{{ nodue.accounts }}</td>
+                    <td>{{ nodue.accountsremark }}</td>
+
+                    
+                    <td>{{ nodue.admin }}</td>
+                        <td>
+                            <a href="/hodbsctcedit/{{ nodue.id }} "> select </a>
+                            <!-- <a href="/hodbsctcdelete/{{ nodue.id }} "> Delete </a> -->
+                            
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+     </table> 
+        </div>
+    </form> 
+</body>
+
+</html>

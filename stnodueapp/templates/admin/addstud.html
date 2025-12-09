@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/style.css">
+
+        <script src="https://kit.fontawesome.com/9a7209e4cb.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,100&family=Fira+Sans+Condensed:ital,wght@0,300;0,400;1,200&family=Inconsolata:wght@700&family=Kaushan+Script&family=Lobster&family=Mochiy+Pop+One&family=Oswald&family=Secular+One&family=Tiro+Gurmukhi&family=Uchen&display=swap');
+
+   
+    /* body{
+        background:linear-gradient(135deg , rgb(229, 211, 214),#1e1e1e);
+        background-image: url(/static/abbs2.jpg);
+        background-repeat: no-repeat;   
+        background-size: cover;
+        background-position: center;
+    } */
+    .imgbx img{
+   position: relative;
+   top: 130px;
+  right: 120px;
+   width: 400px;
+   height: 70%;
+   
+} 
+    #f {
+     margin-left: 200px;
+     margin-top: -20px;
+     position: absolute;
+
+    }
+    #m {
+     margin-left: 200px;
+     margin-top: 5px;
+     position: absolute;
+
+    } #o {
+     margin-left: 200px;
+     margin-top: 39px;
+     position: absolute;
+
+    }
+   
+    .f{
+        position: absolute;
+        margin-top: -20px;
+        margin-left: -28px;
+    }
+    .m{
+        position: absolute;
+        margin-top: 10px;
+        margin-left: -27px;
+    }
+    .o{
+        position: absolute;
+        margin-top: 39px;
+        margin-left: -27px;
+    }
+    #hh {
+        margin-left: 1130px;
+        padding-inline: 25px;
+        width: 50px;        
+        margin-top: -7px;
+        width: 20px;
+        font-size: 20px;
+        position:absolute;
+        color: whitesmoke;
+        font-family: 'Lobster', cursive;
+            
+    }
+
+</style>
+    </head>
+    <body>
+    {% include "navbaradmin.html" %}
+<br>
+        <div class="imgbx">
+            <img src="static/image1.jpeg" alt="">
+        </div>
+       
+        <div class="container">
+            <div class="header">
+                <h1>STUDENT REGISTER</h1>    
+            </div>
+                    <form id='form' class='form' method="post" action="/addstud">
+                        {% csrf_token %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                        {{ message }}
+                        </div>
+                        {% endfor %}
+                       
+                        <div class="form-control">
+                            <input type="text" name="regno" id="regno" placeholder="Register Number">
+                            <small>Error message</small>
+                        </div>
+                        <div class="form-control">
+                            <input type='text' name="name" id="name" placeholder='Name ' required>
+                            <small>Error message</small>
+                        </div>
+                        <div class="form-control">
+                            <input class="f" type="radio" name="gender" value="female"  id="gender"><h4 id="f">Female</h4>
+                            <input class="m" type="radio" name="gender" value="male"  id="gender"><h4 id="m">Male</h4>
+                            <input class="o"  type="radio" name="gender" value="other" id="gender"><h4 id="o">Other</h4>                       
+
+                        </div>
+                        <br><br>
+                        <div class="form-control">
+                            <input type='email'class='input-field' name="email" id="email" placeholder='Email' required>
+                            <small>Error message</small>
+                        </div>  
+                        <div class="form-control">  
+                            <select class="sel1" id="course" name="course" >
+                                <option value="Select Course">Select Course</option>
+                                <option value="BCA">BCA</option>
+                                <option value="BCom">BCom</option>
+                                <option value="BSc">BSc</option>
+                            </select>
+                            <small>Error message</small>
+                            <select class="sel2" id="year" name="year"> 
+                                <option value="Select Year">Select Year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                            </select>
+                            <small>Error message</small>
+                        </div>
+                        <div class="form-control"> 
+                            <input type='password'class='input-field' name="pass1" id="pass1" placeholder='Enter Password' required>
+                            <small>Error message</small>
+                        </div>
+                        <div class="form-control"> 
+                            <input type='password'class='input-field' name="pass2" id="pass2" placeholder='Confirm Password'  required>
+                            <small>Error message</small>
+                        </div>
+                        <button style="margin-left: 200px;" type='submit' class='submit-btn'>Register</button>
+                        
+
+                    </form>
+                    
+        </div>            
+        <script>
+           
+            
+//             let regno= document.getElementById("regno");
+//             let name= document.getElementById("name");
+//             let dob= document.getElementById("dob");
+//             let course= document.getElementById("course");
+//             let year= document.getElementById("year");
+//             let pass1= document.getElementById("pass1");
+//             let pass2= document.getElementById("pass2");
+//             let form=document.querySelector("form");
+
+
+//             function validateInput(){
+//                 if(regno==regno){
+//                     onError(regno,'exists')
+//                 }
+//                 if(regno.value.trim()===""){
+//                   onError(regno,"Register Number cannot be empty");
+//                 }
+//                 else{
+//                    onSuccess(regno);
+
+//                 }
+//                 if (email.value.trim()===""){
+//                     onError(email,"email Number cannot be empty");
+//                 }
+//                 else{
+//                    if(!isValidEmail(email.value.trim())){
+//                     onError(email,"email is not valid");
+//                    }
+//                    else{
+//                     onSuccess(email);
+//                    }
+//                 }
+//                 if(pass1.value.trim()===""){
+//                   onError(pass1,"Password cannot be empty");
+//                 }
+//                 else{
+//                    onSuccess(pass1);
+
+//                 }
+//                 if(pass2.value.trim()===""){
+//                   onError(pass2,"Password cannot be empty");
+//                 }
+//                 else{
+//                     if(pass1.value.trim()!=pass2.value.trim()){
+//                         onError(pass2,"Password does not match")
+//                     }
+//                     else
+//                         onSuccess(pass2);      
+//                 }
+//             }
+//             document.querySelector("button")
+//             .addEventListener("click",(event)=>{
+//                 event.preventDefault();
+//                 validateInput();
+//             });
+//             function onSuccess(input){
+//                 let parent=input.parentElement;
+//                 let messageEle=parent.querySelector("small");
+//                 messageEle.style.visibility="hidden";
+//                 parent.classList.remove("error");
+//                 // messageEle.innerText=""; 
+//                 parent.classList.add("success");
+//             }
+//             function onError(input,message){
+//                 let parent=input.parentElement;
+//                 let messageEle=parent.querySelector("small");
+//                 messageEle.style.visibility="visible";
+//                 messageEle.innerText=message; 
+//                 parent.classList.add("error");
+//                 // messageEle.innerText=""; 
+//                 parent.classList.remove("success");
+
+//             }
+//             function isValidEmail(email){
+//                 // return /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/.test(email);
+//                 return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+// }
+        </script>
+
+        <script src="" async defer></script>
+    </body>
+</html>

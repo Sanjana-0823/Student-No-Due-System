@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/contact1.css">
+
+        <script src="https://kit.fontawesome.com/9a7209e4cb.js" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+      <div class="main-bar">
+        <nav>
+          <span></span>
+          <div class="logo-header">
+          <img src="static/lo.jpg" alt="">
+            <h2 class="logo">Student</h2>
+            <h2 class="logo1">NODUE</h2>
+        </div>
+              <ul>
+                  <li ><a  href="main">HOME</a></li>
+                  <li><a  href="index">LOGIN</a></li>
+                  <li><a  href="adminlogin">ADMIN</a></li>
+                  <li class="active"><a  href="contact">CONTACT US</a></li>
+              </ul>
+        </nav> 
+      </div>
+          <section id="home">
+        <h2>Contact Us</h2>
+
+          </section>
+
+
+          <section id="contact">
+           
+            <div class="getin">
+                <h2>Get in touch</h2>
+                <p>Looking for help? Fill the form and start a new adventure. </p>
+
+                <div class="getin-details">
+                    <h3>Address</h3>
+                    <div>
+                        <i class="fa-solid fa-location-dot  get"></i>
+                        <p>	Bengaluru, Karnataka, India
+                            13.00°N 77.48°E</p>
+                    </div>
+                    <h3>Phone</h3>
+                    <div>
+                        <i class="fa-solid fa-phone  get"></i>
+                        <p>8431751650</p>
+                    </div>
+                    <h3>Email</h3>
+                    <div>
+                        <i class="fa-solid fa-envelope  get"></i>
+                        <p>	sanjum0823@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form">
+              <form  action="contact" method="post">
+                {% csrf_token %}
+                <h4>Contact Us</h4>
+                <div class="form-row">
+                    <input type="text" id="name" name="name" placeholder="Your Name">
+                    <input type="text" id="email" name="email" placeholder="Your Email">
+
+                </div>
+                <div class="form-col">
+                    <input type="text" id="subject" name="subject" placeholder="Subject">
+                </div>
+                <div class="form-col">
+                    <textarea  name="remark" id="remark" cols="30" rows="8" placeholder="How can we help?"></textarea>
+                </div>
+                <div class="form-col">
+                    <button type="submit">Send Message</button>
+                </div>
+              </form>
+            </div>
+            
+        </section>
+          
+          
+          <br><br><br>
+          <footer>
+            <div class="footer-col">
+              <h3>Front end</h3>
+              <li><i class="fa-brands fa-python"></i>Python</li>
+              <li><i class="fa-brands fa-python"></i>Django</li>
+              <li><i class="fa-brands fa-html5"></i>HTML</li>
+              <li><i class="fa-brands fa-css3"></i>CSS</li>
+              <li><i class="fa-brands fa-js"></i>Java Script</li>
+            </div>
+            <div class="footer-col">
+              <h3>Back end</h3>
+              <li><i class="fa-solid fa-database"></i>MySQL</li>
+             
+            </div>
+            <div class="footer-col">
+              <h3>IDE</h3>
+              <li><i class="fa-solid fa-code"></i>VS Code</li>
+            </div>
+            <div class="footer-col">
+              <h3>Referenses</h3>
+              <li><i class="fa-brands fa-internet-explorer"></i>Website</li>
+              <li><i class="fa-solid fa-book"></i>Books</li>
+            </div>
+            <div class="footer-col">
+              <h3>Guided By</h3>
+              <p><i class="fa-solid fa-circle-user"></i>Mr.Praveen Kumar(HOD)</p>
+            </div>
+          </footer>
+    </body>
+</html>
